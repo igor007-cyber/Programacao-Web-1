@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+<h1>Topicks Cadastradas</h1>
+
+{% for x in range(0,Tam) %}
+<p>{{ Motorista[x] }}</p>
+<p>{{ Destino[x] }}</p>
+<p>{{ Tempo[x] }}</p>
+
+<a href="/Atualizar_topik/{{x}}">Editar</a>
+<a href="/excluir/{{x}}">Excluir</a>
+<br>
+{% endfor %}
+
+
+
+{% endblock %}

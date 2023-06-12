@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{%block conteudo%}
+
+<h1>Pagina de cadastrar topik</h1>
+
+{% if erro is not none %}
+
+<p style="color: red">
+    {{erro}}
+</p>    
+
+{% endif %}
+
+
+{% if aceito %}
+
+<p style="color: green">
+    {{aceito}}
+</p>    
+
+{% endif %}
+
+<form action="{{url_for('register')}}" method="post">
+    <label for="nome">Nome do Motorista</label>
+    <input type="text" name="nome"/><br>
+
+    <label for="horario">Horario da topik:</label>
+    <input type="time" name="horario"/><br>
+    
+    <label for="destino">Destino da topik:</label>
+    <input type="text" name="destino"/><br>
+
+    <input type="submit" value="Cadastrar">
+</form>
+
+
+{%endblock%}
