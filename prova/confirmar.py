@@ -1,4 +1,4 @@
-def validar(nome, email ,senha, consenha):
+def validar(nome, senha, email, consenha):
     if nome == "":
         return 'Falta prencher o campo nome'
     elif len(nome) <= 3:

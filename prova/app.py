@@ -14,7 +14,11 @@ def index():
 
 
 @app.route('/cadastro')
-def cadastro():    
+def cadastro():
+    sucesso = request.args.get('sucesso')
+    if sucesso:
+        return render_template('cadastro.html', sucesso=sucesso)
+    
     view = request.args.get('view')
     if view:
         return render_template('cadastro.html',view=view)
