@@ -63,13 +63,13 @@ def Editar(x):
     motorista[x] = mo
     tempo[x] = te
     destino[x] = de
-
+1   
     return redirect(url_for('lista_topick'))
 
 
 @app.route('/excluir/<int:x>')
 def excluir(x):
-    
+        
     del motorista[x]
     del destino[x]
     del tempo[x]
