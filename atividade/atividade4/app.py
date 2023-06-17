@@ -63,7 +63,7 @@ def Editar(x):
     motorista[x] = mo
     tempo[x] = te
     destino[x] = de
-1   
+   
     return redirect(url_for('lista_topick'))
 
 

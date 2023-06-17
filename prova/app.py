@@ -7,28 +7,25 @@ nome = []
 senha = []
 email = []
 confSenha = []
-tam = len(nome)
 
 @app.route('/')
-def home():
-    return render_template('index.html')
+def index():
+    return render_template("index.html")
 
-@app.route('/cadastro_funcionarios')
-def cadastro_funcionarios():
-    sucesso = request.args.get('sucesso')
-    if sucesso:
-        return render_template('cadastor.html',sucesso=sucesso)
-    
+
+@app.route('/cadastro')
+def cadastro():    
     view = request.args.get('view')
     if view:
-        return render_template('cadastor.html',view=view)
+        return render_template('cadastro.html',view=view)
     else:
-        return render_template('adicionar-topik.html')  
+        return render_template('cadastro.html')  
 
 
 @app.route('/cadastrar_funcionarios', methods=['POST'])
 def cadastrar_funcionarios():
     x = 0
+    tam = len(nome)
     nome.append(request.form['nome'])
     senha.append(request.form['senha'])
     email.append(request.form['email'])
@@ -40,18 +37,48 @@ def cadastrar_funcionarios():
     msg = validar(nome[x], senha[x], email[x], confSenha[x])
     ok = 'Cadastro realizado com sucesso'
     if msg is not None:
-        return redirect(url_for('cadastro_funcionarios',view=msg))
+        return redirect(url_for('cadastro',view=msg))
                 
-    return redirect(url_for('cadastro_funcionarios',sucesso=ok))
+    return redirect(url_for('cadastro',sucesso=ok))
 
 @app.route('/listar')
 def listar():
-    return render_template('lista.html', nome=nome, senha=senha, email=email, tam=tam)
-
-@app.route('/editar')
-def editar():
+    no = nome
+    em = email
+    se = senha
+    tam = len(nome)
     
+    return render_template('lista.html', nome=no, email=em, senha=se, tam=tam)
 
-@app.route('/excluir')
-def excluir():
+@app.route('/atualizar/<int:x>')
+def atualizar(x):
+    return render_template('editar.html', x=x, nome=nome[x], email=email[x], senha=senha[x], confSenha=confSenha[x])
+
+
+@app.route('/editar/<int:x>', methods=['POST'])
+def editar(x):
     
+    no = request.form['nome']
+    em = request.form['email']  
+    se = request.form['senha'] 
+    conf = request.form['confSenha'] 
+    
+    nome[x] = no
+    email[x] = em
+    senha[x] = se
+    confSenha[x] = conf
+   
+    return redirect(url_for('listar'))
+
+    
+@app.route('/excluir/<int:x>')
+def excluir(x):
+     
+    del nome[x]   
+    del senha[x]
+    del email[x]
+    del confSenha[x]
+    return redirect(url_for('listar'))
+
+if __name__ == '__main__':
+    app.run(debug=True) 

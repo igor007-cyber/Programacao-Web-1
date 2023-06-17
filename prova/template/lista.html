@@ -1,15 +1,16 @@
 {%extends 'base.html'%}
-{%block 'conteudo'%}
+{%block conteudo%}
 
 {%for x in range(0,tam)%}
 
 <ul>
-    <li>{{nome[x]}}</li>
-    <li>{{senha[x]}}</li>
-    <li>{{email[x]}}</li>
+    <li>Nome: {{nome[x]}}</li>
+    <li>Email: {{email[x]}}</li>
+    <li>senha: {{senha[x]}}</li>
 </ul>
-<p><a href="/Atualizar_topik/{{x}}">Editar</a></p>
+<p><a href="/atualizar/{{x}}">Editar</a></p>
 <p><a href="/excluir/{{x}}">Excluir</a></p>
+
 {%endfor%}
 
 {%endblock%}

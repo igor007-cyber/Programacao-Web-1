@@ -10,11 +10,14 @@
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/cadastrar">Cadastrar</a></li>
+            <li><a href="/cadastro">Cadastrar</a></li>
+            <li><a href="/listar">Lista de Funcionários</a></li>
         </ul>
     </nav>
 
-    {% block 'conteudo' %}{% endblock %}
+    <h1>{{ titulo_pagina }}</h1>
+
+    {% block conteudo %}{% endblock %}
 
     <footer><center> Desenvolvedor Igor Ramalho </center></footer>
     

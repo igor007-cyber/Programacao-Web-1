@@ -1,24 +1,41 @@
-{% extends 'base.html' %}
-{% block 'conteudo' %}
+{%extends 'base.html'%}
+{%block conteudo%}
+
+{% if view is not none %}
+
+<p style="color: red">
+    {{view}}
+</p>    
+
+{% endif %}
 
 
-<form action="{{url_for('cadastro')}}" method="post">
+{% if sucesso %}
+
+<p style="color: green">
+    {{sucesso}}
+</p>    
+
+{% endif %}
+
+
+<form action="{{url_for('cadastrar_funcionarios')}}" method="POST">
 
     <label for="nome">Nome:</label>
-    <input type="text" name="nome">
+    <input type="text" name="nome"><br><br>
 
     <label for="email">email:</label>
-    <input type="text" name="email">
+    <input type="text" name="email"><br><br>
 
     <label for="senha">Senha:</label>
-    <input type="text" name="senha">
+    <input type="password" name="senha"><br><br>
 
     <label for="confsenha">Confirma Senha:</label>
-    <input type="text" name="confsenha">
+    <input type="password" name="confsenha"><br><br>
 
     <input type="submit" value="Cadastrar">
 
 </form>
 
 
-{% endblock %}
+{%endblock%}
