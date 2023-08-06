@@ -1,0 +1,23 @@
+{%extends "index.html"%}
+{%block conteudo%}
+
+<h1>Registro de Pessoa</h1>
+{% with mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        <ul class="mensagens">
+            {% for mensagem in mensagens %}
+                <li>{{ mensagem }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<form action="/register" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <input type="submit" value="Register">
+</form>
+<p>Already have an account? <a href="/login">Login aqui</a></p>
+
+{%endblock%}

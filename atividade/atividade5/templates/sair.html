@@ -1,0 +1,11 @@
+{%extends "index.html"%}
+{%block conteudo%}
+
+    {% if session.username %}
+        <p>Você esta registrado a {{ session.username }}. <a href="/logout">Logout</a>.</p>
+    {% else %}
+        <p>não esta logado. <a href="/login">Login</a>.</p>
+    {% endif %}
+
+{%endblock%}
+
